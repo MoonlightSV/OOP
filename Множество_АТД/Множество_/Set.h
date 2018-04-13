@@ -43,4 +43,6 @@ public:
 	friend istream& operator>>(istream &in, Set &s);
 
 	friend ostream& operator<<(ostream &out, Set s);
+
+	enum error {size_0};
 };

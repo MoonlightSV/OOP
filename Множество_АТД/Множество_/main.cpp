@@ -4,6 +4,7 @@
 
 
 using namespace std;
+enum error {size_0};
 
 int main()
 {
@@ -27,14 +28,21 @@ int main()
 	
 	cout << S1;
 
-	cout << "Mid_Value = " << S.mid_value() << endl;
+	/*try 
+	{*/
+		cout << "Mid_Value = " << S.mid_value() << endl;
 
-	cout << "Median = " << S.median() << endl;
+		cout << "Median = " << S.median() << endl;
 
-	cout << "Mode = " << S.mode() << endl;
+		cout << "Mode = " << S.mode() << endl;
 
-	cout << "Dispersion = " << S.dispersion() << endl;
-
+		cout << "Dispersion = " << S.dispersion() << endl;
+	/*}
+	catch (const error message)
+	{
+		cout << "Set is empty" << endl; 
+	}*/
+	
 	S2 = S + S1;
 
 	cout << S2;
