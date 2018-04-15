@@ -1,0 +1,4 @@
+﻿  MergeSort.cpp
+c:\users\мунлайт.desktop-07ib4nn\documents\visual studio 2017\projects\mergesort\mergesort\mergesort.cpp(56): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  MergeSort.vcxproj -> C:\Users\Мунлайт.DESKTOP-07IB4NN\Documents\Visual Studio 2017\Projects\MergeSort\Debug\MergeSort.exe
+  MergeSort.vcxproj -> C:\Users\Мунлайт.DESKTOP-07IB4NN\Documents\Visual Studio 2017\Projects\MergeSort\Debug\MergeSort.pdb (Partial PDB)

@@ -63,31 +63,23 @@ int main() {
 			cin >> array[i];
 	}
 
-	//cout << endl << "Before Insertion Sort :" << endl;
-	//PrintArray(array, n);
+	cout << endl << "Before Insertion Sort :" << endl;
+	PrintArray(array, n);
 
-	//time_t start, end;
+	time_t start, end;
 
-	//time(&start);
-
-	auto begin = steady_clock::now();
+	time(&start);
 
 	InsertionSort(array, n);
 
-	auto end = steady_clock::now();
+	time(&end);
 
-	auto elapsed_ms = duration_cast<milliseconds>(end - begin);
-
-	cout << "The time: " << elapsed_ms.count() << " ms" << endl;
+	double ms = difftime(end, start);
 	
-	//time(&end);
+	cout << "The time: " << ms << " ms" << endl;
 
-	//double second = difftime(end, start);
-
-	//cout << endl << "Operating time: " << second << endl;
-
-	//cout << endl << "After Insertion Sort :" << endl;
-	//PrintArray(array, n);
+	cout << endl << "After Insertion Sort :" << endl;
+	PrintArray(array, n);
 
 	system("pause");
 	return (0);
