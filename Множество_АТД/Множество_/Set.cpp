@@ -31,25 +31,26 @@ vector <float> Set::get_S() const
 
 void Set::sort_S()
 {
-	sort(/*this->get_S()*/S.begin(), /*this->get_S()*/S.end(), less<float>());
-	this->sorted = true;
+	if (!sorted)
+		sort(S.begin(), S.end(), less<float>());
+	sorted = true;
 }
 
 bool Set::empty()
 {
 	bool flag;
 
-	if (/*this->get_S()*/S.size() == 0) flag = true;
+	if (this->get_S().size() == 0) flag = true;
 	else flag = false;
 
 	return flag;
 }
 
-float Set::mid_value() const 
+float Set::mid_value() 
 {
-	/*if (!this->empty()) throw size_0;
+	if (this->empty()) throw size_0;
 
-	if (!sorted) this->sort_S();*/
+	if (!this->sorted) this->sort_S();
 
 	float Sum = 0;
 
@@ -61,11 +62,11 @@ float Set::mid_value() const
 	return Sum / S.size();
 }
 
-float Set::median() const 
+float Set::median()
 {
-	/*if (!empty) throw size_0;
+	if (this->empty()) throw size_0;
 
-	if (!sorted) sort_S;*/
+	if (!this->sorted) this->sort_S();
 
 	if (S.size() % 2 == 0)
 	{
@@ -77,11 +78,11 @@ float Set::median() const
 	}
 }
 
-float Set::mode() const
+float Set::mode()
 {
-	/*if (!empty) throw size_0;
+	if (this->empty()) throw size_0;
 
-	if (!sorted) sort_S;*/
+	if (!this->sorted) this->sort_S();
 
 	vector <float> count(10);
 
@@ -105,11 +106,11 @@ float Set::mode() const
 	return I;
 }
 
-float Set::dispersion() const
+float Set::dispersion()
 {
-	/*if (!empty) throw size_0;
+	if (this->empty()) throw size_0;
 
-	if (!sorted) sort_S;*/
+	if (!this->sorted) this->sort_S();
 
 	float MatOj = 0;
 	float Disp = 0;

@@ -4,7 +4,6 @@
 
 
 using namespace std;
-enum error {size_0};
 
 int main()
 {
@@ -14,6 +13,7 @@ int main()
 	Set S3;
 	Set S4;
 	Set S5(5);
+	Set S6;
 
 	vector <float> s1 = { 1, 2, 1, 3, 1, 5, 4, 6, 5 };
 	vector <float> s2 = {1, 4, 2, 3, 7, 1, 8, 5};
@@ -28,8 +28,8 @@ int main()
 	
 	cout << S1;
 
-	/*try 
-	{*/
+	try 
+	{
 		cout << "Mid_Value = " << S.mid_value() << endl;
 
 		cout << "Median = " << S.median() << endl;
@@ -37,11 +37,11 @@ int main()
 		cout << "Mode = " << S.mode() << endl;
 
 		cout << "Dispersion = " << S.dispersion() << endl;
-	/*}
-	catch (const error message)
+	}
+	catch (const int)
 	{
 		cout << "Set is empty" << endl; 
-	}*/
+	}
 	
 	S2 = S + S1;
 

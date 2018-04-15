@@ -1,11 +1,13 @@
-﻿  Set.cpp
-c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(88): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(90): warning C4244: аргумент: преобразование "const float" в "const unsigned int", возможна потеря данных
-c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(96): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(101): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(117): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(164): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(199): warning C4018: <: несоответствие типов со знаком и без знака
-c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(225): warning C4018: <: несоответствие типов со знаком и без знака
+﻿  main.cpp
+  Set.cpp
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(89): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(91): warning C4244: аргумент: преобразование "float" в "const unsigned int", возможна потеря данных
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(97): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(102): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(118): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(165): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(200): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\множество_атд\множество_\set.cpp(226): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
   Множество_.vcxproj -> C:\Users\Мунлайт.DESKTOP-07IB4NN\Desktop\Git OOP\OOP\Множество_АТД\Debug\Множество_.exe
   Множество_.vcxproj -> C:\Users\Мунлайт.DESKTOP-07IB4NN\Desktop\Git OOP\OOP\Множество_АТД\Debug\Множество_.pdb (Partial PDB)

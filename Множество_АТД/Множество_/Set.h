@@ -26,13 +26,13 @@ public:
 
 	bool empty();
 
-	float mid_value() const;
+	float mid_value();
 
-	float median() const;
+	float median();
 
-	float mode() const;
+	float mode();
 
-	float dispersion() const;
+	float dispersion();
 
 	Set operator+ (Set &s);
 
@@ -44,5 +44,5 @@ public:
 
 	friend ostream& operator<<(ostream &out, Set s);
 
-	enum error {size_0};
+	int size_0;
 };
