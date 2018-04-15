@@ -1,4 +1,4 @@
 ﻿  InsertionSort.cpp
-c:\users\мунлайт.desktop-07ib4nn\documents\visual studio 2017\projects\insertionsort\insertionsort\insertionsort.cpp(42): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  InsertionSort.vcxproj -> C:\Users\Мунлайт.DESKTOP-07IB4NN\Documents\Visual Studio 2017\Projects\InsertionSort\Debug\InsertionSort.exe
-  InsertionSort.vcxproj -> C:\Users\Мунлайт.DESKTOP-07IB4NN\Documents\Visual Studio 2017\Projects\InsertionSort\Debug\InsertionSort.pdb (Partial PDB)
+c:\users\мунлайт.desktop-07ib4nn\desktop\git oop\oop\insertionsort\insertionsort\insertionsort.cpp(43): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  InsertionSort.vcxproj -> C:\Users\Мунлайт.DESKTOP-07IB4NN\Desktop\Git OOP\OOP\InsertionSort\Debug\InsertionSort.exe
+  InsertionSort.vcxproj -> C:\Users\Мунлайт.DESKTOP-07IB4NN\Desktop\Git OOP\OOP\InsertionSort\Debug\InsertionSort.pdb (Partial PDB)

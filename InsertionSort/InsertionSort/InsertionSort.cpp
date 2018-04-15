@@ -3,9 +3,10 @@
 
 #include "stdafx.h"
 #include <iostream>
-#include <ctime>
+#include <chrono>
 
 using namespace std;
+using namespace chrono;
 
 void PrintArray(int *array, int n) 
 {
@@ -16,7 +17,7 @@ void PrintArray(int *array, int n)
 
 void InsertionSort(int *arr, int arr_size) 
 {
-	int count(0);
+	double count(0.0);
 
 	if (arr_size > 1) 
 	{
@@ -62,13 +63,31 @@ int main() {
 			cin >> array[i];
 	}
 
-	cout << endl << "Before Insertion Sort :" << endl;
-	PrintArray(array, n);
+	//cout << endl << "Before Insertion Sort :" << endl;
+	//PrintArray(array, n);
+
+	//time_t start, end;
+
+	//time(&start);
+
+	auto begin = steady_clock::now();
 
 	InsertionSort(array, n);
 
-	cout << endl << "After Insertion Sort :" << endl;
-	PrintArray(array, n);
+	auto end = steady_clock::now();
+
+	auto elapsed_ms = duration_cast<milliseconds>(end - begin);
+
+	cout << "The time: " << elapsed_ms.count() << " ms" << endl;
+	
+	//time(&end);
+
+	//double second = difftime(end, start);
+
+	//cout << endl << "Operating time: " << second << endl;
+
+	//cout << endl << "After Insertion Sort :" << endl;
+	//PrintArray(array, n);
 
 	system("pause");
 	return (0);
