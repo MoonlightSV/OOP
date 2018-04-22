@@ -11,11 +11,11 @@ using namespace std;
 int main()
 {
 	char buffer[80 + 1] = {};
-	scanf_s("%80s", buffer);
+	cin >> buffer;
 	string s(buffer);
 	int n = (int)s.size();
 	s = ' ' + s;
-	vector<vector<int>> count(1 + n, vector<int>(1 + n, 0));
+	vector<vector<int>> count(n + 1, vector<int>(n + 1, 0));
 	count[0][0] = 1;
 	for (int len = 1; len <= n; len++) {
 		for (int open = 0; open <= n; open++) {
@@ -27,7 +27,8 @@ int main()
 			}
 		}
 	}
-	cout << count[n][0];
+	cout << count[n][0] << endl;
+	system("pause");
     return 0;
 }
 

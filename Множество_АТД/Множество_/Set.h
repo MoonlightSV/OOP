@@ -8,31 +8,25 @@ using namespace std;
 
 class Set {
 
-	vector <float> S;
+	vector <unsigned int> S;
+	bool sorted;
 	
 public:
-	bool sorted;
-
 	Set();
-	Set(int n);
-	Set(vector <float> &s);
+	Set(vector <unsigned int> &s);
 	~Set();
 
-	void set_S(const vector <float> &s);
+	void set_S(const vector <unsigned int> &s);
 
-	vector <float> get_S() const;
+	vector <unsigned int> get_S() const;
 
 	void sort_S();
 
 	bool empty();
 
-	float mid_value();
+	void insert(const unsigned int num);
 
-	float median();
-
-	float mode();
-
-	float dispersion();
+	void exclusion(const unsigned int num);
 
 	Set operator+ (Set &s);
 
@@ -40,9 +34,12 @@ public:
 
 	Set operator* (Set &s);
 
-	friend istream& operator>>(istream &in, Set &s);
-
 	friend ostream& operator<<(ostream &out, Set s);
 
+	friend bool operator==(Set &s1, Set &s2);
+	friend bool operator>=(Set &s1, Set &s2);
+	friend bool operator<=(Set &s1, Set &s2);
+
 	int size_0;
+	int elem_0;
 };
