@@ -9,12 +9,11 @@ using namespace std;
 class Set {
 
 	vector <float> S;
+	bool sorted;
 	
 public:
-	bool sorted;
-
 	Set();
-	Set(int n);
+	//Set(int n);
 	Set(vector <float> &s);
 	~Set();
 
@@ -26,13 +25,13 @@ public:
 
 	bool empty();
 
-	float mid_value();
+	//float mid_value();
 
-	float median();
+	//float median();
 
-	float mode();
+	//float mode();
 
-	float dispersion();
+	//float dispersion();
 
 	Set operator+ (Set &s);
 
@@ -40,7 +39,7 @@ public:
 
 	Set operator* (Set &s);
 
-	friend istream& operator>>(istream &in, Set &s);
+	//friend istream& operator>>(istream &in, Set &s);
 
 	friend ostream& operator<<(ostream &out, Set s);
 

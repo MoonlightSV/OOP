@@ -5,10 +5,10 @@ Set::Set()
 {
 }
 
-Set::Set(int n)
-{
-	S.resize(n);
-}
+//Set::Set(int n)
+//{
+//	S.resize(n);
+//}
 
 Set::Set(vector <float> &s)
 {
@@ -19,8 +19,8 @@ Set::~Set()
 {
 }
 
-void Set::set_S(const vector <float> &s) 
-{
+void Set::set_S(const vector <float> &s)
+{	
 	S = s;
 }
 
@@ -46,85 +46,85 @@ bool Set::empty()
 	return flag;
 }
 
-float Set::mid_value() 
-{
-	if (this->empty()) throw size_0;
-
-	if (!this->sorted) this->sort_S();
-
-	float Sum = 0;
-
-	for (auto &s : S) 
-	{
-		Sum += s;
-	}
-
-	return Sum / S.size();
-}
-
-float Set::median()
-{
-	if (this->empty()) throw size_0;
-
-	if (!this->sorted) this->sort_S();
-
-	if (S.size() % 2 == 0)
-	{
-		return (S[S.size() / 2] + S[S.size() / 2 - 1]) / 2;
-	}
-	else 
-	{
-		return S[S.size() / 2];
-	}
-}
-
-float Set::mode()
-{
-	if (this->empty()) throw size_0;
-
-	if (!this->sorted) this->sort_S();
-
-	vector <float> count(10);
-
-	for (auto i = 0; i < S.size(); i++) 
-	{
-		count[S[i]]++;
-	}
-
-	float max = count[0];
-	float I = 0;
-
-	for (auto i = 0; i < S.size(); i++) 
-	{
-		if (max < count[i]) 
-		{
-			max = count[i];
-			I = i;
-		}
-	}
-
-	return I;
-}
-
-float Set::dispersion()
-{
-	if (this->empty()) throw size_0;
-
-	if (!this->sorted) this->sort_S();
-
-	float MatOj = 0;
-	float Disp = 0;
-
-	for (auto i = 0; i < S.size(); i++) 
-	{
-		MatOj += S[i] / S.size();
-		Disp += pow(S[i], 2) / S.size();
-	}
-
-	Disp = Disp - pow(MatOj, 2); //Дисперсия
-
-	return Disp;
-}
+//float Set::mid_value() 
+//{
+//	if (this->empty()) throw size_0;
+//
+//	if (!this->sorted) this->sort_S();
+//
+//	float Sum = 0;
+//
+//	for (auto &s : S) 
+//	{
+//		Sum += s;
+//	}
+//
+//	return Sum / S.size();
+//}
+//
+//float Set::median()
+//{
+//	if (this->empty()) throw size_0;
+//
+//	if (!this->sorted) this->sort_S();
+//
+//	if (S.size() % 2 == 0)
+//	{
+//		return (S[S.size() / 2] + S[S.size() / 2 - 1]) / 2;
+//	}
+//	else 
+//	{
+//		return S[S.size() / 2];
+//	}
+//}
+//
+//float Set::mode()
+//{
+//	if (this->empty()) throw size_0;
+//
+//	if (!this->sorted) this->sort_S();
+//
+//	vector <float> count(10);
+//
+//	for (auto i = 0; i < S.size(); i++) 
+//	{
+//		count[S[i]]++;
+//	}
+//
+//	float max = count[0];
+//	float I = 0;
+//
+//	for (auto i = 0; i < S.size(); i++) 
+//	{
+//		if (max < count[i]) 
+//		{
+//			max = count[i];
+//			I = i;
+//		}
+//	}
+//
+//	return I;
+//}
+//
+//float Set::dispersion()
+//{
+//	if (this->empty()) throw size_0;
+//
+//	if (!this->sorted) this->sort_S();
+//
+//	float MatOj = 0;
+//	float Disp = 0;
+//
+//	for (auto i = 0; i < S.size(); i++) 
+//	{
+//		MatOj += S[i] / S.size();
+//		Disp += pow(S[i], 2) / S.size();
+//	}
+//
+//	Disp = Disp - pow(MatOj, 2); //Дисперсия
+//
+//	return Disp;
+//}
 
 Set Set::operator+(Set &s)
 {	
@@ -221,20 +221,21 @@ Set Set::operator*(Set &s)
 	return Set(tmp);
 }
 
-istream& operator>>(istream &in, Set &s) 
-{
-	for (auto i(0); i < s.get_S().size(); i++)
-	{
-		in >> s.get_S()[i];
-	}
-
-	return in;
-}
+//istream& operator>>(istream &in, Set &s) 
+//{
+//	for (auto i(0); i < s.get_S().size(); i++)
+//	{
+//		in >> s.get_S()[i];
+//	}
+//
+//	return in;
+//}
 
 ostream& operator<<(ostream &out, Set s)
 {
 	out << "{ ";
-	for (auto &s : s.get_S()) {
+	for (auto &s : s.get_S()) 
+	{
 		out << s << " ";
 	}
 	out << "}" << endl;
