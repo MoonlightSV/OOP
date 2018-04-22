@@ -13,33 +13,15 @@ int main()
 	Set S3;
 	Set S4;
 
-	vector <float> s1 = { 1, 2, 1, 3, 1, 5, 4, 6, 5 };
-	vector <float> s2 = {1, 4, 2, 3, 7, 1, 8, 5};
+	vector <unsigned int> s1 = { 1, 2, 1, 4, 1, 5, 3, 6, 5 };
+	vector <unsigned int> s2 = { 1, 4, 2, 3, 7, 1, 8, 5 };
 
 	S.set_S(s1);
 	S1.set_S(s2);
 
-	S.sort_S();
-	S1.sort_S();
-
 	cout << S;
 	
 	cout << S1;
-
-	//try 
-	//{
-	//	cout << "Mid_Value = " << S.mid_value() << endl;
-
-	//	cout << "Median = " << S.median() << endl;
-
-	//	cout << "Mode = " << S.mode() << endl;
-
-	//	cout << "Dispersion = " << S.dispersion() << endl;
-	//}
-	//catch (const int)
-	//{
-	//	cout << "Set is empty" << endl; 
-	//}
 	
 	S2 = S + S1;
 
@@ -52,6 +34,31 @@ int main()
 	S4 = S - S1;
 
 	cout << S4;
+
+	S.insert(7);
+
+	cout << S;
+
+	try
+	{
+		S1.exclusion(5);
+		S1.exclusion(8);
+	}
+	catch (int elem_0)
+	{
+		cout << "In set there is no such element" << endl;
+	}
+
+	cout << S1;
+
+	if (S == S1) cout << "Sets are equal" << endl;
+	else cout << "Sets are not equal" << endl;
+
+	if (S <= S1) cout << "Set is a subset" << endl;
+	else cout << "Set is not a subset" << endl;
+
+	if (S >= S1) cout << "Set is a subset" << endl;
+	else cout << "Set is not a subset" << endl;
 
 	system("pause");
 	return 0;

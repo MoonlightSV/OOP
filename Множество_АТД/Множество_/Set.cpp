@@ -5,12 +5,7 @@ Set::Set()
 {
 }
 
-//Set::Set(int n)
-//{
-//	S.resize(n);
-//}
-
-Set::Set(vector <float> &s)
+Set::Set(vector <unsigned int> &s)
 {
 	set_S(s);
 }
@@ -19,12 +14,26 @@ Set::~Set()
 {
 }
 
-void Set::set_S(const vector <float> &s)
+void Set::set_S(const vector <unsigned int> &s)
 {	
-	S = s;
+	bool flag = true;
+
+	for (auto &s1 : s)
+	{
+		if (S.size() == 0) S.push_back(s1);
+		for (auto &s2 : S)
+			if (s1 == s2) 
+			{
+				flag = false;
+				break;
+			}
+
+		if (flag) S.push_back(s1);
+		flag = true;
+	}
 }
 
-vector <float> Set::get_S() const 
+vector <unsigned int> Set::get_S() const
 {
 	return S;
 }
@@ -32,7 +41,7 @@ vector <float> Set::get_S() const
 void Set::sort_S()
 {
 	if (!sorted)
-		sort(S.begin(), S.end(), less<float>());
+		sort(S.begin(), S.end(), less<unsigned int>());
 	sorted = true;
 }
 
@@ -46,93 +55,33 @@ bool Set::empty()
 	return flag;
 }
 
-//float Set::mid_value() 
-//{
-//	if (this->empty()) throw size_0;
-//
-//	if (!this->sorted) this->sort_S();
-//
-//	float Sum = 0;
-//
-//	for (auto &s : S) 
-//	{
-//		Sum += s;
-//	}
-//
-//	return Sum / S.size();
-//}
-//
-//float Set::median()
-//{
-//	if (this->empty()) throw size_0;
-//
-//	if (!this->sorted) this->sort_S();
-//
-//	if (S.size() % 2 == 0)
-//	{
-//		return (S[S.size() / 2] + S[S.size() / 2 - 1]) / 2;
-//	}
-//	else 
-//	{
-//		return S[S.size() / 2];
-//	}
-//}
-//
-//float Set::mode()
-//{
-//	if (this->empty()) throw size_0;
-//
-//	if (!this->sorted) this->sort_S();
-//
-//	vector <float> count(10);
-//
-//	for (auto i = 0; i < S.size(); i++) 
-//	{
-//		count[S[i]]++;
-//	}
-//
-//	float max = count[0];
-//	float I = 0;
-//
-//	for (auto i = 0; i < S.size(); i++) 
-//	{
-//		if (max < count[i]) 
-//		{
-//			max = count[i];
-//			I = i;
-//		}
-//	}
-//
-//	return I;
-//}
-//
-//float Set::dispersion()
-//{
-//	if (this->empty()) throw size_0;
-//
-//	if (!this->sorted) this->sort_S();
-//
-//	float MatOj = 0;
-//	float Disp = 0;
-//
-//	for (auto i = 0; i < S.size(); i++) 
-//	{
-//		MatOj += S[i] / S.size();
-//		Disp += pow(S[i], 2) / S.size();
-//	}
-//
-//	Disp = Disp - pow(MatOj, 2); //Дисперсия
-//
-//	return Disp;
-//}
+void Set::insert(const unsigned int num)
+{
+	S.push_back(num);
+}
+
+void Set::exclusion(const unsigned int num)
+{
+	bool flag = true;
+
+	for (auto &s : S)
+		if (s == num)
+		{
+			unsigned int tmp;
+			tmp = S.back();
+			s = tmp;
+			S.pop_back();
+			flag = false;
+			break;
+		}
+
+	if (flag) throw elem_0 = 0;
+}
 
 Set Set::operator+(Set &s)
 {	
 	bool flag = true;
-	vector <float> tmp(this->get_S());
-
-	if (!this->sorted) this->sort_S();
-	if (!s.sorted) s.sort_S();
+	vector <unsigned int> tmp(this->get_S());
 
 	for (auto &s2 : s.get_S())
 	{
@@ -155,7 +104,7 @@ Set Set::operator-(Set &s)
 	int i(0);
 	int I(0);
 	bool flag = true;
-	vector <float> tmp;
+	vector <unsigned int> tmp;
 
 	if (!this->sorted) this->sort_S();
 	if (!s.sorted) s.sort_S();
@@ -190,7 +139,7 @@ Set Set::operator*(Set &s)
 	int i(0);
 	int I(0);
 	bool flag = true;
-	vector <float> tmp;
+	vector <unsigned int> tmp;
 
 	if (!this->sorted) this->sort_S();
 	if (!s.sorted) s.sort_S();
@@ -221,16 +170,6 @@ Set Set::operator*(Set &s)
 	return Set(tmp);
 }
 
-//istream& operator>>(istream &in, Set &s) 
-//{
-//	for (auto i(0); i < s.get_S().size(); i++)
-//	{
-//		in >> s.get_S()[i];
-//	}
-//
-//	return in;
-//}
-
 ostream& operator<<(ostream &out, Set s)
 {
 	out << "{ ";
@@ -241,4 +180,67 @@ ostream& operator<<(ostream &out, Set s)
 	out << "}" << endl;
 
 	return out;
+}
+
+bool operator==(Set & s1, Set & s2)
+{
+	bool flag;
+
+	if (!s1.sorted) s1.sort_S();
+	if (!s2.sorted) s2.sort_S();
+
+	if (s1.get_S().size() != s2.get_S().size()) 
+		flag = false;
+	else
+	{
+		for (auto &s1 : s1.get_S())
+			for (auto &s2 : s2.get_S())
+				if (s1 == s2)
+				{
+					flag = true;
+					continue;
+				}
+				else flag = false;
+	}
+	return flag;
+}
+
+bool operator<=(Set & s1, Set & s2)
+{
+	bool flag = false;
+	unsigned int size(0);
+
+	for (auto &s1 : s1.get_S())
+		for (auto &s2 : s2.get_S())
+		{
+			if (s1 == s2)
+			{
+				size++;
+				break;
+			}
+		}
+	
+	if (size == s1.get_S().size()) flag = true;
+
+	return flag;
+}
+
+bool operator>=(Set & s1, Set & s2)
+{
+	bool flag = false;
+	unsigned int size(0);
+
+	for (auto &s2 : s2.get_S())
+		for (auto &s1 : s1.get_S())
+		{
+			if (s1 == s2)
+			{
+				size++;
+				break;
+			}
+		}
+
+	if (size == s2.get_S().size()) flag = true;
+
+	return flag;
 }
