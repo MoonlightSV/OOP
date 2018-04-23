@@ -25,15 +25,15 @@ int main()
 	
 	S2 = S + S1;
 
-	cout << S2;
+	cout << "+ " << S2;
 	
 	S3 = S * S1;
 	
-	cout << S3;
+	cout << "* " << S3;
 
 	S4 = S - S1;
 
-	cout << S4;
+	cout << "- " << S4;
 
 	S.insert(7);
 

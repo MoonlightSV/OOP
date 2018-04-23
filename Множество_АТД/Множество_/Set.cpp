@@ -57,7 +57,14 @@ bool Set::empty()
 
 void Set::insert(const unsigned int num)
 {
-	S.push_back(num);
+	bool flag = true;
+	
+	for (auto &s : S)
+	{
+		if (s == num) flag = false;
+	}
+
+	if (flag) S.push_back(num);
 }
 
 void Set::exclusion(const unsigned int num)
@@ -101,34 +108,17 @@ Set Set::operator+(Set &s)
 
 Set Set::operator-(Set &s)
 {
-	int i(0);
-	int I(0);
 	bool flag = true;
 	vector <unsigned int> tmp;
 
-	if (!this->sorted) this->sort_S();
-	if (!s.sorted) s.sort_S();
-
 	for (auto &s1 : this->get_S())
 	{
-		while (i < s.get_S().size())
-		{
-			if (s1 == s.get_S()[i])
-			{
-				I = i;
-				I++;
+		for (auto &s2 : s.get_S())
+			if (s1 == s2)
 				flag = false;
-				break;
-			}
-			
-			i++;
-		}
 
 		if (flag) tmp.push_back(s1);
-
 		flag = true;
-
-		i = I;
 	}
 
 	return Set(tmp);
@@ -136,35 +126,20 @@ Set Set::operator-(Set &s)
 
 Set Set::operator*(Set &s)
 {
-	int i(0);
-	int I(0);
 	bool flag = true;
 	vector <unsigned int> tmp;
 
-	if (!this->sorted) this->sort_S();
-	if (!s.sorted) s.sort_S();
-
 	for (auto &s1 : this->get_S())
 	{
-		while (i < s.get_S().size())
-		{
-			if (s1 == s.get_S()[i])
+		for (auto &s2 : s.get_S())
+			if (s1 == s2)
 			{
-				I = i;
-				I++;
 				flag = true;
 				break;
 			}
 			else flag = false;
 
-			i++;
-		}
-
 		if (flag) tmp.push_back(s1);
-
-		flag = true;
-
-		i = I;
 	}
 
 	return Set(tmp);
