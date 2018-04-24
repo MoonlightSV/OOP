@@ -5,7 +5,7 @@ Set::Set()
 {
 }
 
-Set::Set(vector <unsigned int> &s)
+Set::Set(const vector <unsigned int> &s)
 {
 	set_S(s);
 }
@@ -45,7 +45,7 @@ void Set::sort_S()
 	sorted = true;
 }
 
-bool Set::empty()
+bool Set::empty() const
 {
 	bool flag = false;
 
@@ -84,7 +84,7 @@ void Set::exclusion(const unsigned int num)
 	if (flag) throw elem_0 = 0;
 }
 
-Set Set::operator+(Set &s)
+Set Set::operator+(const Set &s) const
 {	
 	bool flag = true;
 	vector <unsigned int> tmp(this->get_S());
@@ -105,7 +105,7 @@ Set Set::operator+(Set &s)
 	return Set(tmp);
 }
 
-Set Set::operator-(Set &s)
+Set Set::operator-(const Set &s) const
 {
 	bool flag = true;
 	vector <unsigned int> tmp;
@@ -123,7 +123,7 @@ Set Set::operator-(Set &s)
 	return Set(tmp);
 }
 
-Set Set::operator*(Set &s)
+Set Set::operator*(const Set &s) const
 {
 	bool flag = true;
 	vector <unsigned int> tmp;
@@ -144,89 +144,87 @@ Set Set::operator*(Set &s)
 	return Set(tmp);
 }
 
-bool Set::operator[](unsigned int num)
+bool Set::operator==(const Set & s) const
+{
+	bool flag = false;
+	unsigned int size(0);
+
+	if (this->get_S().size() != s.get_S().size())
+		flag = false;
+	else
+	{
+		for (auto &s1 : this->get_S())
+			for (auto &s2 : s.get_S())
+				if (s1 == s2)
+				{
+					size++;
+					break;
+				}
+	}
+
+	if (size == this->get_S().size()) flag = true;
+
+	return flag;
+}
+
+bool Set::operator<=(const Set &s) const
+{
+	bool flag = false;
+	unsigned int size(0);
+
+	for (auto &s1 : this->get_S())
+		for (auto &s2 : s.get_S())
+		{
+			if (s1 == s2)
+			{
+				size++;
+				break;
+			}
+		}
+	
+	if (size == this->get_S().size()) flag = true;
+
+	return flag;
+}
+
+bool Set::operator>=(const Set &s) const
+{
+	bool flag = false;
+	unsigned int size(0);
+
+	for (auto &s2 : s.get_S())
+		for (auto &s1 : this->get_S())
+		{
+			if (s1 == s2)
+			{
+				size++;
+				break;
+			}
+		}
+
+	if (size == s.get_S().size()) flag = true;
+
+	return flag;
+}
+
+bool Set::operator[](const unsigned int num) const
 {
 	bool flag = false;
 
 	for (auto &s : this->get_S())
 		if (s == num) flag = true;
-	
+
 	return flag;
 }
 
-ostream& operator<<(ostream &out, Set s)
+ostream& operator<<(ostream &out, const Set s)
 {
 	out << "{ ";
-	for (auto &s : s.get_S()) 
+	for (auto &s : s.get_S())
 	{
 		out << s << " ";
 	}
 	out << "}" << endl;
 
 	return out;
-}
-
-bool operator==(Set & s1, Set & s2)
-{
-	bool flag;
-
-	//if (!s1.sorted) 
-		s1.sort_S();
-	//if (!s2.sorted) 
-		s2.sort_S();
-
-	if (s1.get_S().size() != s2.get_S().size()) 
-		flag = false;
-	else
-	{
-		for (auto &s1 : s1.get_S())
-			for (auto &s2 : s2.get_S())
-				if (s1 == s2)
-				{
-					flag = true;
-					continue;
-				}
-				else flag = false;
-	}
-	return flag;
-}
-
-bool operator<=(Set & s1, Set & s2)
-{
-	bool flag = false;
-	unsigned int size(0);
-
-	for (auto &s1 : s1.get_S())
-		for (auto &s2 : s2.get_S())
-		{
-			if (s1 == s2)
-			{
-				size++;
-				break;
-			}
-		}
-	
-	if (size == s1.get_S().size()) flag = true;
-
-	return flag;
-}
-
-bool operator>=(Set & s1, Set & s2)
-{
-	bool flag = false;
-	unsigned int size(0);
-
-	for (auto &s2 : s2.get_S())
-		for (auto &s1 : s1.get_S())
-		{
-			if (s1 == s2)
-			{
-				size++;
-				break;
-			}
-		}
-
-	if (size == s2.get_S().size()) flag = true;
-
-	return flag;
 }
