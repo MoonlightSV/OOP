@@ -28,11 +28,13 @@ public:
 
 	void exclusion(const unsigned int num);
 
-	Set operator+ (Set &s);
+	Set operator+(Set &s);
 
-	Set operator- (Set &s);
+	Set operator-(Set &s);
 
-	Set operator* (Set &s);
+	Set operator*(Set &s);
+
+	bool operator[](unsigned int num);
 
 	friend ostream& operator<<(ostream &out, Set s);
 

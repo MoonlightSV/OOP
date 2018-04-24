@@ -47,10 +47,9 @@ void Set::sort_S()
 
 bool Set::empty()
 {
-	bool flag;
+	bool flag = false;
 
 	if (this->get_S().size() == 0) flag = true;
-	else flag = false;
 
 	return flag;
 }
@@ -145,6 +144,16 @@ Set Set::operator*(Set &s)
 	return Set(tmp);
 }
 
+bool Set::operator[](unsigned int num)
+{
+	bool flag = false;
+
+	for (auto &s : this->get_S())
+		if (s == num) flag = true;
+	
+	return flag;
+}
+
 ostream& operator<<(ostream &out, Set s)
 {
 	out << "{ ";
@@ -161,8 +170,10 @@ bool operator==(Set & s1, Set & s2)
 {
 	bool flag;
 
-	if (!s1.sorted) s1.sort_S();
-	if (!s2.sorted) s2.sort_S();
+	//if (!s1.sorted) 
+		s1.sort_S();
+	//if (!s2.sorted) 
+		s2.sort_S();
 
 	if (s1.get_S().size() != s2.get_S().size()) 
 		flag = false;

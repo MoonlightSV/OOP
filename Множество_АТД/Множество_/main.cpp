@@ -51,6 +51,9 @@ int main()
 
 	cout << S1;
 
+	if (S[8]) cout << "In set there is such an element" << endl;
+	else cout << "In set there is no such element" << endl;
+
 	if (S == S1) cout << "Sets are equal" << endl;
 	else cout << "Sets are not equal" << endl;
 
