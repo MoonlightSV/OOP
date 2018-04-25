@@ -1,4 +1,5 @@
 #include "Set.h"
+#include "ostream.h"
 #include <vector>
 #include <iostream>
 
@@ -25,31 +26,44 @@ int main()
 	
 	S2 = S + S1;
 
-	cout << S2;
+	cout << "+ " << S2;
 	
 	S3 = S * S1;
 	
-	cout << S3;
+	cout << "* " << S3;
 
 	S4 = S - S1;
 
-	cout << S4;
+	cout << "- " << S4;
 
-	S.insert(7);
+	try
+	{
+		S.insert(-7);
+	}
+	catch (int error)
+	{
+		if (error) cout << "Negative number" << endl;
+	}
 
 	cout << S;
 
 	try
 	{
-		S1.exclusion(5);
+		S1.exclusion(7);
 		S1.exclusion(8);
 	}
-	catch (int elem_0)
+	catch (int error)
 	{
-		cout << "In set there is no such element" << endl;
+		if (error)
+			cout << "In set there is no such element" << endl;
+		else
+			cout << "Set is empty" << endl;
 	}
 
 	cout << S1;
+
+	if (S[8]) cout << "In set there is such an element" << endl;
+	else cout << "In set there is no such element" << endl;
 
 	if (S == S1) cout << "Sets are equal" << endl;
 	else cout << "Sets are not equal" << endl;

@@ -13,7 +13,7 @@ class Set {
 	
 public:
 	Set();
-	Set(vector <unsigned int> &s);
+	Set(const vector <unsigned int> &s);
 	~Set();
 
 	void set_S(const vector <unsigned int> &s);
@@ -22,24 +22,29 @@ public:
 
 	void sort_S();
 
-	bool empty();
+	bool empty() const;
+
+	unsigned int size() const;
 
 	void insert(const unsigned int num);
 
 	void exclusion(const unsigned int num);
 
-	Set operator+ (Set &s);
+	Set operator+(const Set &s) const;
 
-	Set operator- (Set &s);
+	Set operator-(const Set &s) const;
 
-	Set operator* (Set &s);
+	Set operator*(const Set &s) const;
+	
+	bool operator==(const Set &s) const;
 
-	friend ostream& operator<<(ostream &out, Set s);
+	bool operator<=(const Set &s) const;
 
-	friend bool operator==(Set &s1, Set &s2);
-	friend bool operator>=(Set &s1, Set &s2);
-	friend bool operator<=(Set &s1, Set &s2);
+	bool operator>=(const Set &s) const;
+
+	bool operator[](const unsigned int num) const;
 
 	int size_0;
 	int elem_0;
+	int sign_0;
 };

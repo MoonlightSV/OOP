@@ -5,7 +5,7 @@ Set::Set()
 {
 }
 
-Set::Set(vector <unsigned int> &s)
+Set::Set(const vector <unsigned int> &s)
 {
 	set_S(s);
 }
@@ -45,25 +45,40 @@ void Set::sort_S()
 	sorted = true;
 }
 
-bool Set::empty()
+bool Set::empty() const
 {
-	bool flag;
+	bool flag = false;
 
 	if (this->get_S().size() == 0) flag = true;
-	else flag = false;
 
 	return flag;
 }
 
+unsigned int Set::size() const
+{
+	return S.size();
+}
+
 void Set::insert(const unsigned int num)
 {
-	S.push_back(num);
+	bool flag = true;
+
+	if (num <= 0) throw sign_0 = 1;
+	
+	for (auto &s : S)
+	{
+		if (s == num) flag = false;
+	}
+
+	if (flag) S.push_back(num);
 }
 
 void Set::exclusion(const unsigned int num)
 {
 	bool flag = true;
 
+	if (S.size() == 0) throw size_0 = 0;
+	
 	for (auto &s : S)
 		if (s == num)
 		{
@@ -75,10 +90,10 @@ void Set::exclusion(const unsigned int num)
 			break;
 		}
 
-	if (flag) throw elem_0 = 0;
+	if (flag) throw elem_0 = 1;
 }
 
-Set Set::operator+(Set &s)
+Set Set::operator+(const Set &s) const
 {	
 	bool flag = true;
 	vector <unsigned int> tmp(this->get_S());
@@ -99,119 +114,75 @@ Set Set::operator+(Set &s)
 	return Set(tmp);
 }
 
-Set Set::operator-(Set &s)
+Set Set::operator-(const Set &s) const
 {
-	int i(0);
-	int I(0);
 	bool flag = true;
 	vector <unsigned int> tmp;
 
-	if (!this->sorted) this->sort_S();
-	if (!s.sorted) s.sort_S();
-
 	for (auto &s1 : this->get_S())
 	{
-		while (i < s.get_S().size())
-		{
-			if (s1 == s.get_S()[i])
-			{
-				I = i;
-				I++;
+		for (auto &s2 : s.get_S())
+			if (s1 == s2)
 				flag = false;
-				break;
-			}
-			
-			i++;
-		}
 
 		if (flag) tmp.push_back(s1);
-
 		flag = true;
-
-		i = I;
 	}
 
 	return Set(tmp);
 }
 
-Set Set::operator*(Set &s)
+Set Set::operator*(const Set &s) const
 {
-	int i(0);
-	int I(0);
 	bool flag = true;
 	vector <unsigned int> tmp;
 
-	if (!this->sorted) this->sort_S();
-	if (!s.sorted) s.sort_S();
-
 	for (auto &s1 : this->get_S())
 	{
-		while (i < s.get_S().size())
-		{
-			if (s1 == s.get_S()[i])
+		for (auto &s2 : s.get_S())
+			if (s1 == s2)
 			{
-				I = i;
-				I++;
 				flag = true;
 				break;
 			}
 			else flag = false;
 
-			i++;
-		}
-
 		if (flag) tmp.push_back(s1);
-
-		flag = true;
-
-		i = I;
 	}
 
 	return Set(tmp);
 }
 
-ostream& operator<<(ostream &out, Set s)
-{
-	out << "{ ";
-	for (auto &s : s.get_S()) 
-	{
-		out << s << " ";
-	}
-	out << "}" << endl;
-
-	return out;
-}
-
-bool operator==(Set & s1, Set & s2)
-{
-	bool flag;
-
-	if (!s1.sorted) s1.sort_S();
-	if (!s2.sorted) s2.sort_S();
-
-	if (s1.get_S().size() != s2.get_S().size()) 
-		flag = false;
-	else
-	{
-		for (auto &s1 : s1.get_S())
-			for (auto &s2 : s2.get_S())
-				if (s1 == s2)
-				{
-					flag = true;
-					continue;
-				}
-				else flag = false;
-	}
-	return flag;
-}
-
-bool operator<=(Set & s1, Set & s2)
+bool Set::operator==(const Set & s) const
 {
 	bool flag = false;
 	unsigned int size(0);
 
-	for (auto &s1 : s1.get_S())
-		for (auto &s2 : s2.get_S())
+	if (this->get_S().size() != s.get_S().size())
+		flag = false;
+	else
+	{
+		for (auto &s1 : this->get_S())
+			for (auto &s2 : s.get_S())
+				if (s1 == s2)
+				{
+					size++;
+					break;
+				}
+	}
+
+	if (size == this->get_S().size()) flag = true;
+
+	return flag;
+}
+
+bool Set::operator<=(const Set &s) const
+{
+	bool flag = false;
+	unsigned int size(0);
+
+	for (auto &s1 : this->get_S())
+		for (auto &s2 : s.get_S())
 		{
 			if (s1 == s2)
 			{
@@ -220,18 +191,18 @@ bool operator<=(Set & s1, Set & s2)
 			}
 		}
 	
-	if (size == s1.get_S().size()) flag = true;
+	if (size == this->get_S().size()) flag = true;
 
 	return flag;
 }
 
-bool operator>=(Set & s1, Set & s2)
+bool Set::operator>=(const Set &s) const
 {
 	bool flag = false;
 	unsigned int size(0);
 
-	for (auto &s2 : s2.get_S())
-		for (auto &s1 : s1.get_S())
+	for (auto &s2 : s.get_S())
+		for (auto &s1 : this->get_S())
 		{
 			if (s1 == s2)
 			{
@@ -240,7 +211,17 @@ bool operator>=(Set & s1, Set & s2)
 			}
 		}
 
-	if (size == s2.get_S().size()) flag = true;
+	if (size == s.get_S().size()) flag = true;
+
+	return flag;
+}
+
+bool Set::operator[](const unsigned int num) const
+{
+	bool flag = false;
+
+	for (auto &s : this->get_S())
+		if (s == num) flag = true;
 
 	return flag;
 }
