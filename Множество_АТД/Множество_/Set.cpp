@@ -5,7 +5,11 @@ Set::Set()
 {
 }
 
+<<<<<<< HEAD
 Set::Set(const vector <float> &s)
+=======
+Set::Set(const vector <unsigned int> &s)
+>>>>>>> great
 {
 	set_S(s);
 }
@@ -49,14 +53,29 @@ bool Set::empty() const
 {
 	bool flag = false;
 
+<<<<<<< HEAD
 	if (this->size() == 0) flag = true;
+=======
+	if (this->get_S().size() == 0) flag = true;
+>>>>>>> great
 
 	return flag;
 }
 
 unsigned int Set::size() const
 {
+<<<<<<< HEAD
 	return S.size();
+=======
+	bool flag = true;
+	
+	for (auto &s : S)
+	{
+		if (s == num) flag = false;
+	}
+
+	if (flag) S.push_back(num);
+>>>>>>> great
 }
 
 void Set::insert(const float num)
@@ -118,7 +137,11 @@ Set Set::operator+(const Set &s) const
 Set Set::operator-(const Set &s) const
 {
 	bool flag = true;
+<<<<<<< HEAD
 	vector <float> tmp;
+=======
+	vector <unsigned int> tmp;
+>>>>>>> great
 
 	for (auto &s1 : this->get_S())
 	{
@@ -136,7 +159,11 @@ Set Set::operator-(const Set &s) const
 Set Set::operator*(const Set &s) const
 {
 	bool flag = true;
+<<<<<<< HEAD
 	vector <float> tmp;
+=======
+	vector <unsigned int> tmp;
+>>>>>>> great
 
 	for (auto &s1 : this->get_S())
 	{
@@ -157,7 +184,11 @@ Set Set::operator*(const Set &s) const
 bool Set::operator==(const Set & s) const
 {
 	bool flag = false;
+<<<<<<< HEAD
 	float size(0);
+=======
+	unsigned int size(0);
+>>>>>>> great
 
 	if (this->get_S().size() != s.get_S().size())
 		flag = false;
@@ -217,7 +248,11 @@ bool Set::operator>=(const Set &s) const
 	return flag;
 }
 
+<<<<<<< HEAD
 bool Set::operator[](const float num) const
+=======
+bool Set::operator[](const unsigned int num) const
+>>>>>>> great
 {
 	bool flag = false;
 
@@ -225,4 +260,19 @@ bool Set::operator[](const float num) const
 		if (s == num) flag = true;
 
 	return flag;
+<<<<<<< HEAD
+=======
+}
+
+ostream& operator<<(ostream &out, const Set s)
+{
+	out << "{ ";
+	for (auto &s : s.get_S())
+	{
+		out << s << " ";
+	}
+	out << "}" << endl;
+
+	return out;
+>>>>>>> great
 }
