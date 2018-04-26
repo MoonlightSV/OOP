@@ -14,8 +14,8 @@ int main()
 	Set S3;
 	Set S4;
 
-	vector <unsigned int> s1 = { 1, 2, 1, 4, 1, 5, 3, 6, 5 };
-	vector <unsigned int> s2 = { 1, 4, 2, 3, 7, 1, 8, 5 };
+	vector <float> s1 = { 1, 2, 1, 4, 1, 5, 3, 6, 5 };
+	vector <float> s2 = { 1, 4, 2, 3, 7, 1, 8, 5 };
 
 	S.set_S(s1);
 	S1.set_S(s2);
@@ -38,11 +38,12 @@ int main()
 
 	try
 	{
-		S.insert(-7);
+		S.insert(7);
 	}
 	catch (int error)
 	{
 		if (error) cout << "Negative number" << endl;
+		else cout << "Wrong type" << endl;
 	}
 
 	cout << S;
@@ -54,10 +55,8 @@ int main()
 	}
 	catch (int error)
 	{
-		if (error)
-			cout << "In set there is no such element" << endl;
-		else
-			cout << "Set is empty" << endl;
+		if (error) cout << "In set there is no such element" << endl;
+		else cout << "Set is empty" << endl;
 	}
 
 	cout << S1;

@@ -5,7 +5,7 @@ Set::Set()
 {
 }
 
-Set::Set(const vector <unsigned int> &s)
+Set::Set(const vector <float> &s)
 {
 	set_S(s);
 }
@@ -14,7 +14,7 @@ Set::~Set()
 {
 }
 
-void Set::set_S(const vector <unsigned int> &s)
+void Set::set_S(const vector <float> &s)
 {	
 	bool flag = true;
 
@@ -33,7 +33,7 @@ void Set::set_S(const vector <unsigned int> &s)
 	}
 }
 
-vector <unsigned int> Set::get_S() const
+vector <float> Set::get_S() const
 {
 	return S;
 }
@@ -41,7 +41,7 @@ vector <unsigned int> Set::get_S() const
 void Set::sort_S()
 {
 	if (!sorted)
-		sort(S.begin(), S.end(), less<unsigned int>());
+		sort(S.begin(), S.end(), less<float>());
 	sorted = true;
 }
 
@@ -49,7 +49,7 @@ bool Set::empty() const
 {
 	bool flag = false;
 
-	if (this->get_S().size() == 0) flag = true;
+	if (this->size() == 0) flag = true;
 
 	return flag;
 }
@@ -59,11 +59,12 @@ unsigned int Set::size() const
 	return S.size();
 }
 
-void Set::insert(const unsigned int num)
+void Set::insert(const float num)
 {
 	bool flag = true;
 
-	if (num <= 0) throw sign_0 = 1;
+	if (num <= 0) throw sign_ex = 1;
+	if (num - floor(num) > 0) throw type_ex = 0;
 	
 	for (auto &s : S)
 	{
@@ -73,16 +74,16 @@ void Set::insert(const unsigned int num)
 	if (flag) S.push_back(num);
 }
 
-void Set::exclusion(const unsigned int num)
+void Set::exclusion(const float num)
 {
 	bool flag = true;
 
-	if (S.size() == 0) throw size_0 = 0;
+	if (S.size() == 0) throw size_ex = 0;
 	
 	for (auto &s : S)
 		if (s == num)
 		{
-			unsigned int tmp;
+			float tmp;
 			tmp = S.back();
 			s = tmp;
 			S.pop_back();
@@ -90,13 +91,13 @@ void Set::exclusion(const unsigned int num)
 			break;
 		}
 
-	if (flag) throw elem_0 = 1;
+	if (flag) throw elem_ex = 1;
 }
 
 Set Set::operator+(const Set &s) const
 {	
 	bool flag = true;
-	vector <unsigned int> tmp(this->get_S());
+	vector <float> tmp(this->get_S());
 
 	for (auto &s2 : s.get_S())
 	{
@@ -117,7 +118,7 @@ Set Set::operator+(const Set &s) const
 Set Set::operator-(const Set &s) const
 {
 	bool flag = true;
-	vector <unsigned int> tmp;
+	vector <float> tmp;
 
 	for (auto &s1 : this->get_S())
 	{
@@ -135,7 +136,7 @@ Set Set::operator-(const Set &s) const
 Set Set::operator*(const Set &s) const
 {
 	bool flag = true;
-	vector <unsigned int> tmp;
+	vector <float> tmp;
 
 	for (auto &s1 : this->get_S())
 	{
@@ -156,7 +157,7 @@ Set Set::operator*(const Set &s) const
 bool Set::operator==(const Set & s) const
 {
 	bool flag = false;
-	unsigned int size(0);
+	float size(0);
 
 	if (this->get_S().size() != s.get_S().size())
 		flag = false;
@@ -179,7 +180,7 @@ bool Set::operator==(const Set & s) const
 bool Set::operator<=(const Set &s) const
 {
 	bool flag = false;
-	unsigned int size(0);
+	float size(0);
 
 	for (auto &s1 : this->get_S())
 		for (auto &s2 : s.get_S())
@@ -199,7 +200,7 @@ bool Set::operator<=(const Set &s) const
 bool Set::operator>=(const Set &s) const
 {
 	bool flag = false;
-	unsigned int size(0);
+	float size(0);
 
 	for (auto &s2 : s.get_S())
 		for (auto &s1 : this->get_S())
@@ -216,7 +217,7 @@ bool Set::operator>=(const Set &s) const
 	return flag;
 }
 
-bool Set::operator[](const unsigned int num) const
+bool Set::operator[](const float num) const
 {
 	bool flag = false;
 
