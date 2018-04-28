@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-04-28T11:28:35
+# Project created by QtCreator 2018-04-28T15:45:18
 #
 #-------------------------------------------------
 
@@ -12,10 +12,10 @@ TARGET = Calculator
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
+SOURCES += main.cpp \
+    button.cpp \
     calculator.cpp
 
 HEADERS  += \
+    button.h \
     calculator.h
-
-FORMS    += mainwindow.ui

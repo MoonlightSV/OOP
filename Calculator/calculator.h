@@ -1,21 +1,68 @@
-#ifndef _Calculator_h_
- #define _Calculator_h_
- #include <QWidget>
- #include <QStack>
- #include <QLabel>
- #include <QPushButton>
- #include <QGridLayout>
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
 
- class Calculator : public QWidget {
-  Q_OBJECT //макрос, нужен в начале всех наших классов
-  private:
-   QLabel *displaystring;
-   QStack <QString> stack;
-  public:
-   Calculator (QWidget* pwgt = 0);
-   QPushButton* createButton (const QString& str);
-   void calculate ();
-  public slots: //Общедоступные обработчики событий
-   void slotButtonClicked ();
- };
+#include <QDialog>
+
+class QLineEdit;
+class Button;
+
+class Calculator : public QDialog {
+ Q_OBJECT
+public:
+ Calculator(QWidget *parent = 0);
+protected:
+ bool eventFilter(QObject *target, QEvent *event);
+private slots:
+ void digitClicked();
+ void unaryOperatorClicked();
+ void additiveOperatorClicked();
+ void multiplicativeOperatorClicked();
+ void equalClicked();
+ void pointClicked();
+ void changeSignClicked();
+ void backspaceClicked();
+ void clear();
+ void clearAll();
+ void clearMemory();
+ void readMemory();
+ void setMemory();
+ void addToMemory();
+
+private:
+ Button *createButton (const QString &text, const QColor &color, const char *member);
+ void abortOperation();
+ bool calculate (double rightOperand, const QString &pendingOperator);
+
+ double sumInMemory;
+ double sumSoFar;
+ double factorSoFar;
+ QString pendingAdditiveOperator;
+ QString pendingMultiplicativeOperator;
+ bool waitingForOperand;
+
+ QLineEdit *display;
+
+ enum { NumDigitButtons = 10 };
+ Button *digitButtons[NumDigitButtons];
+
+ Button *pointButton;
+ Button *changeSignButton;
+ Button *backspaceButton;
+ Button *clearButton;
+ Button *clearAllButton;
+ Button *clearMemoryButton;
+ Button *readMemoryButton;
+ Button *setMemoryButton;
+ Button *addToMemoryButton;
+
+ Button *divisionButton;
+ Button *timesButton;
+ Button *minusButton;
+ Button *plusButton;
+ Button *squareRootButton;
+ Button *powerButton;
+ Button *reciprocalButton;
+ Button *equalButton;
+};
+
 #endif
