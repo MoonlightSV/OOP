@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(digits_numbers()));
     connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(digits_numbers()));
     connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(digits_numbers()));
+
     connect(ui->pushButton_sign, SIGNAL(clicked()), this, SLOT(operations()));
     connect(ui->pushButton_percent, SIGNAL(clicked()), this, SLOT(operations()));
     connect(ui->pushButton_sin, SIGNAL(clicked()), this, SLOT(operations()));
@@ -31,12 +32,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_minus, SIGNAL(clicked()), this, SLOT(math_operations()));
     connect(ui->pushButton_plus, SIGNAL(clicked()), this, SLOT(math_operations()));
     connect(ui->pushButton_pow, SIGNAL(clicked()), this, SLOT(math_operations()));
+    connect(ui->pushButton_exp, SIGNAL(clicked()), this, SLOT(math_operations()));
 
     ui->pushButton_div->setCheckable(true);
     ui->pushButton_mul->setCheckable(true);
     ui->pushButton_minus->setCheckable(true);
     ui->pushButton_plus->setCheckable(true);
     ui->pushButton_pow->setCheckable(true);
+    ui->pushButton_exp->setCheckable(true);
 }
 
 MainWindow::~MainWindow()
@@ -205,6 +208,15 @@ void MainWindow::on_pushButton_equal_clicked()
 
         ui->result_show->setText(new_label);
         ui->memory->setText(ui->memory->text() + QString::number(num_first) + "^" + QString::number(num_second) + " = " + new_label + "\n");
-        ui->pushButton_mul->setChecked(false);
+        ui->pushButton_pow->setChecked(false);
+    }
+    else if (ui->pushButton_exp->isChecked())
+    {
+        labelNumber = num_first * pow(10, num_second);
+        new_label = QString::number(labelNumber, 'g', 15);
+
+        ui->result_show->setText(new_label);
+        ui->memory->setText(ui->memory->text() + QString::number(num_first) + " * 10^" + QString::number(num_second) + " = " + new_label + "\n");
+        ui->pushButton_exp->setChecked(false);
     }
 }

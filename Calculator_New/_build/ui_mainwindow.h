@@ -302,7 +302,7 @@ public:
 "}"));
         pushButton_tan = new QPushButton(centralWidget);
         pushButton_tan->setObjectName(QStringLiteral("pushButton_tan"));
-        pushButton_tan->setGeometry(QRect(240, 180, 61, 61));
+        pushButton_tan->setGeometry(QRect(240, 240, 61, 61));
         pushButton_tan->setFont(font);
         pushButton_tan->setStyleSheet(QLatin1String("QPushButton {\n"
 "  background-color: rgb(215, 215, 215);\n"
@@ -314,7 +314,7 @@ public:
 "}"));
         pushButton_sin = new QPushButton(centralWidget);
         pushButton_sin->setObjectName(QStringLiteral("pushButton_sin"));
-        pushButton_sin->setGeometry(QRect(240, 60, 61, 61));
+        pushButton_sin->setGeometry(QRect(240, 120, 61, 61));
         pushButton_sin->setFont(font);
         pushButton_sin->setStyleSheet(QLatin1String("QPushButton {\n"
 "  background-color: rgb(215, 215, 215);\n"
@@ -326,19 +326,21 @@ public:
 "}"));
         pushButton_exp = new QPushButton(centralWidget);
         pushButton_exp->setObjectName(QStringLiteral("pushButton_exp"));
-        pushButton_exp->setGeometry(QRect(240, 300, 61, 61));
+        pushButton_exp->setGeometry(QRect(240, 60, 61, 61));
         pushButton_exp->setFont(font);
         pushButton_exp->setStyleSheet(QLatin1String("QPushButton {\n"
-"  background-color: rgb(215, 215, 215);\n"
+"  background-color: rgb(255, 151, 57);\n"
+"  color: white; \n"
 "  border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #BEBEBE, stop: 1 #D7D7D7);\n"
+"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         pushButton_cos = new QPushButton(centralWidget);
         pushButton_cos->setObjectName(QStringLiteral("pushButton_cos"));
-        pushButton_cos->setGeometry(QRect(240, 120, 61, 61));
+        pushButton_cos->setGeometry(QRect(240, 180, 61, 61));
         pushButton_cos->setFont(font);
         pushButton_cos->setStyleSheet(QLatin1String("QPushButton {\n"
 "  background-color: rgb(215, 215, 215);\n"
@@ -350,7 +352,7 @@ public:
 "}"));
         pushButton_ln = new QPushButton(centralWidget);
         pushButton_ln->setObjectName(QStringLiteral("pushButton_ln"));
-        pushButton_ln->setGeometry(QRect(240, 240, 61, 61));
+        pushButton_ln->setGeometry(QRect(240, 300, 61, 61));
         pushButton_ln->setFont(font);
         pushButton_ln->setStyleSheet(QLatin1String("QPushButton {\n"
 "  background-color: rgb(215, 215, 215);\n"
