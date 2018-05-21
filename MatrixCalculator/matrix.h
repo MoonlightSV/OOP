@@ -14,6 +14,11 @@ public:
     float get(int, int);
     Matrix minor(int, int);
     float det();
+    Matrix mulnum(float);
+    Matrix trans();
+    Matrix operator+(const Matrix &);
+    Matrix operator-(const Matrix &);
+    Matrix operator*(const Matrix &);
 };
 
 #endif // MATRIX_H

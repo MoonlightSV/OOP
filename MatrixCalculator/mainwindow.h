@@ -26,6 +26,20 @@ private slots:
 
     void on_detB_clicked();
 
+    void on_mulAtonum_clicked();
+
+    void on_mulBtonum_clicked();
+
+    void on_transA_clicked();
+
+    void on_transB_clicked();
+
+    void on_plus_clicked();
+
+    void on_minus_clicked();
+
+    void on_mul_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

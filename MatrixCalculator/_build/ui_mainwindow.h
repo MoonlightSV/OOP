@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
@@ -51,12 +52,18 @@ public:
     QLabel *LdetA;
     QPushButton *detB;
     QLabel *LdetB;
+    QPushButton *mulAtonum;
+    QLineEdit *numA;
+    QPushButton *mulBtonum;
+    QLineEdit *numB;
+    QPushButton *transA;
+    QPushButton *transB;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1052, 618);
+        MainWindow->resize(1031, 511);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         matrixA = new QTableWidget(centralWidget);
@@ -71,26 +78,34 @@ public:
         plus = new QPushButton(centralWidget);
         plus->setObjectName(QStringLiteral("plus"));
         plus->setGeometry(QRect(310, 50, 51, 51));
+        QFont font;
+        font.setPointSize(20);
+        plus->setFont(font);
         minus = new QPushButton(centralWidget);
         minus->setObjectName(QStringLiteral("minus"));
         minus->setGeometry(QRect(310, 130, 51, 51));
+        minus->setFont(font);
         mul = new QPushButton(centralWidget);
         mul->setObjectName(QStringLiteral("mul"));
         mul->setGeometry(QRect(310, 210, 51, 51));
+        mul->setFont(font);
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(20, 0, 111, 21));
+        QFont font1;
+        font1.setPointSize(14);
+        label->setFont(font1);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(390, 0, 111, 21));
+        label_2->setFont(font1);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(750, 0, 111, 21));
+        label_3->setFont(font1);
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(690, 140, 21, 21));
-        QFont font;
-        font.setPointSize(20);
         label_4->setFont(font);
         rowA = new QSpinBox(centralWidget);
         rowA->setObjectName(QStringLiteral("rowA"));
@@ -100,40 +115,72 @@ public:
         colA->setGeometry(QRect(10, 340, 61, 31));
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(80, 300, 71, 31));
+        label_5->setGeometry(QRect(80, 300, 81, 31));
+        QFont font2;
+        font2.setPointSize(10);
+        label_5->setFont(font2);
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(80, 340, 91, 31));
+        label_6->setGeometry(QRect(80, 340, 101, 31));
+        label_6->setFont(font2);
         setA = new QPushButton(centralWidget);
         setA->setObjectName(QStringLiteral("setA"));
         setA->setGeometry(QRect(200, 320, 75, 31));
+        setA->setFont(font2);
         rowB = new QSpinBox(centralWidget);
         rowB->setObjectName(QStringLiteral("rowB"));
         rowB->setGeometry(QRect(380, 300, 61, 31));
         label_7 = new QLabel(centralWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(450, 300, 71, 31));
+        label_7->setGeometry(QRect(450, 300, 81, 31));
+        label_7->setFont(font2);
         setB = new QPushButton(centralWidget);
         setB->setObjectName(QStringLiteral("setB"));
         setB->setGeometry(QRect(570, 320, 75, 31));
+        setB->setFont(font2);
         label_8 = new QLabel(centralWidget);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(450, 340, 91, 31));
+        label_8->setGeometry(QRect(450, 340, 101, 31));
+        label_8->setFont(font2);
         colB = new QSpinBox(centralWidget);
         colB->setObjectName(QStringLiteral("colB"));
         colB->setGeometry(QRect(380, 340, 61, 31));
         detA = new QPushButton(centralWidget);
         detA->setObjectName(QStringLiteral("detA"));
-        detA->setGeometry(QRect(10, 380, 91, 31));
+        detA->setGeometry(QRect(10, 380, 101, 31));
+        detA->setFont(font2);
         LdetA = new QLabel(centralWidget);
         LdetA->setObjectName(QStringLiteral("LdetA"));
-        LdetA->setGeometry(QRect(110, 380, 161, 31));
+        LdetA->setGeometry(QRect(120, 380, 161, 31));
         detB = new QPushButton(centralWidget);
         detB->setObjectName(QStringLiteral("detB"));
-        detB->setGeometry(QRect(380, 380, 91, 31));
+        detB->setGeometry(QRect(380, 380, 101, 31));
+        detB->setFont(font2);
         LdetB = new QLabel(centralWidget);
         LdetB->setObjectName(QStringLiteral("LdetB"));
-        LdetB->setGeometry(QRect(480, 380, 161, 31));
+        LdetB->setGeometry(QRect(490, 380, 161, 31));
+        mulAtonum = new QPushButton(centralWidget);
+        mulAtonum->setObjectName(QStringLiteral("mulAtonum"));
+        mulAtonum->setGeometry(QRect(10, 420, 101, 31));
+        mulAtonum->setFont(font2);
+        numA = new QLineEdit(centralWidget);
+        numA->setObjectName(QStringLiteral("numA"));
+        numA->setGeometry(QRect(120, 420, 71, 31));
+        mulBtonum = new QPushButton(centralWidget);
+        mulBtonum->setObjectName(QStringLiteral("mulBtonum"));
+        mulBtonum->setGeometry(QRect(380, 420, 101, 31));
+        mulBtonum->setFont(font2);
+        numB = new QLineEdit(centralWidget);
+        numB->setObjectName(QStringLiteral("numB"));
+        numB->setGeometry(QRect(490, 420, 71, 31));
+        transA = new QPushButton(centralWidget);
+        transA->setObjectName(QStringLiteral("transA"));
+        transA->setGeometry(QRect(10, 460, 121, 31));
+        transA->setFont(font2);
+        transB = new QPushButton(centralWidget);
+        transB->setObjectName(QStringLiteral("transB"));
+        transB->setGeometry(QRect(380, 460, 121, 31));
+        transB->setFont(font2);
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -161,6 +208,10 @@ public:
         LdetA->setText(QString());
         detB->setText(QApplication::translate("MainWindow", "\320\236\320\277\321\200\320\265\320\264\320\265\320\273\320\270\321\202\320\265\320\273\321\214", Q_NULLPTR));
         LdetB->setText(QString());
+        mulAtonum->setText(QApplication::translate("MainWindow", "\320\243\320\274\320\275\320\276\320\266\320\270\321\202\321\214 \320\275\320\260", Q_NULLPTR));
+        mulBtonum->setText(QApplication::translate("MainWindow", "\320\243\320\274\320\275\320\276\320\266\320\270\321\202\321\214 \320\275\320\260", Q_NULLPTR));
+        transA->setText(QApplication::translate("MainWindow", "\320\242\321\200\320\260\320\275\321\201\320\277\320\276\320\275\320\270\321\200\320\276\320\262\320\260\321\202\321\214", Q_NULLPTR));
+        transB->setText(QApplication::translate("MainWindow", "\320\242\321\200\320\260\320\275\321\201\320\277\320\276\320\275\320\270\321\200\320\276\320\262\320\260\321\202\321\214", Q_NULLPTR));
     } // retranslateUi
 
 };

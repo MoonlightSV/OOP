@@ -79,3 +79,56 @@ float Matrix::det()
     }
 }
 
+Matrix Matrix::mulnum(float n)
+{
+    Matrix tmp(this->row, this->column);
+    for (int i = 0; i < tmp.row; i++)
+        for (int j = 0; j < tmp.column; j++)
+            tmp.matrix[i][j] = n * this->matrix[i][j];
+    return tmp;
+}
+
+Matrix Matrix::trans()
+{
+    Matrix tmp(this->column, this->row);
+    for (int i = 0; i < tmp.row; i++)
+        for (int j = 0; j < tmp.column; j++)
+            tmp.matrix[i][j] = this->matrix[j][i];
+    return tmp;
+}
+
+Matrix Matrix::operator+(const Matrix &right)
+{
+    if ((this->row == right.row) && (this->column == right.column)) {
+        Matrix tmp(row, column);
+        for (int i = 0; i < tmp.row; i++)
+            for (int j = 0; j < tmp.column; j++)
+                tmp.matrix[i][j] = this->matrix[i][j] + right.matrix[i][j];
+        return tmp;
+    }
+}
+
+Matrix Matrix::operator-(const Matrix &right)
+{
+    if ((this->row == right.row) && (this->column == right.column)) {
+        Matrix tmp(row, column);
+        for (int i = 0; i < tmp.row; i++)
+            for (int j = 0; j < tmp.column; j++)
+                tmp.matrix[i][j] = this->matrix[i][j] - right.matrix[i][j];
+        return tmp;
+    }
+}
+
+
+Matrix Matrix::operator*(const Matrix &right)
+{
+    if (this->column == right.row) {
+        Matrix tmp(this->row, right.column);
+        for (int i = 0; i < tmp.row; i++)
+            for (int j = 0; j < tmp.column; j++) {
+                for (int k = 0; k < right.row; k++)
+                    tmp.matrix[i][j] += this->matrix[i][k] * right.matrix[k][j];
+            }
+        return tmp;
+    }
+}
