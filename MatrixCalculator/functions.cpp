@@ -1,5 +1,18 @@
 #include "functions.h"
 
+void ErrorMsg(int msg){//показывает сообщение о неверных входных данных
+    QErrorMessage errorMsg;
+    switch (msg){
+        case 1:errorMsg.showMessage("Неверные данные!");
+        break;
+        case 2:errorMsg.showMessage("Недопустимый размер!");
+        break;
+        case 3:errorMsg.showMessage("Операция невозможна!");
+        break;
+    }
+    errorMsg.exec();
+}
+
 Matrix TableToMatrix(QTableWidget *table)
 {
     int row = table->rowCount();

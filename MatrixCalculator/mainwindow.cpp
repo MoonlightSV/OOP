@@ -52,6 +52,7 @@ void MainWindow::on_detA_clicked()
             QString str = QString::number(det, 'f', 3);//перевод в строку вещ.числа
             ui->LdetA->setText(str);//вывод строки в метку
         }
+        else ErrorMsg(2);
     }
 }
 
@@ -66,6 +67,7 @@ void MainWindow::on_detB_clicked()
             QString str = QString::number(det, 'f', 3);//перевод в строку вещ.числа
             ui->LdetB->setText(str);//вывод строки в метку
         }
+        else ErrorMsg(2);
     }
 }
 
@@ -79,12 +81,15 @@ void MainWindow::on_mulAtonum_clicked()
         QString s = ui->numA->text();
         bool ok;
         float num = s.toFloat(&ok);
-        tmp = tmp.mulnum(num);//умножение матрицы на число
-        ui->matrixRes->setRowCount(row);
-        ui->matrixRes->setColumnCount(column);
-        MatrixToTable(tmp, ui->matrixRes);
-        ui->matrixRes->resizeRowsToContents();
-        ui->matrixRes->resizeColumnsToContents();
+        if (ok){
+            tmp = tmp.mulnum(num);//умножение матрицы на число
+            ui->matrixRes->setRowCount(row);
+            ui->matrixRes->setColumnCount(column);
+            MatrixToTable(tmp, ui->matrixRes);
+            ui->matrixRes->resizeRowsToContents();
+            ui->matrixRes->resizeColumnsToContents();
+        }
+        else ErrorMsg(1);
     }
 }
 
@@ -97,12 +102,15 @@ void MainWindow::on_mulBtonum_clicked()
         QString s = ui->numB->text();
         bool ok;
         float num = s.toFloat(&ok);
-        tmp = tmp.mulnum(num);//умножение матрицы на число
-        ui->matrixRes->setRowCount(row);
-        ui->matrixRes->setColumnCount(column);
-        MatrixToTable(tmp, ui->matrixRes);
-        ui->matrixRes->resizeRowsToContents();
-        ui->matrixRes->resizeColumnsToContents();
+        if (ok) {
+            tmp = tmp.mulnum(num);//умножение матрицы на число
+            ui->matrixRes->setRowCount(row);
+            ui->matrixRes->setColumnCount(column);
+            MatrixToTable(tmp, ui->matrixRes);
+            ui->matrixRes->resizeRowsToContents();
+            ui->matrixRes->resizeColumnsToContents();
+        }
+        else ErrorMsg(1);
     }
 }
 
@@ -143,14 +151,17 @@ void MainWindow::on_plus_clicked()
     int row2 = ui->matrixB->rowCount();
     int column2 = ui->matrixB->columnCount();
     if ((row1 != 0) && (column1 != 0) && (row2 != 0) && (column2 != 0)){
-        Matrix tmp1 = TableToMatrix(ui->matrixA);
-        Matrix tmp2 = TableToMatrix(ui->matrixB);
-        Matrix res = tmp1 + tmp2;
-        ui->matrixRes->setRowCount(row1);
-        ui->matrixRes->setColumnCount(column1);
-        MatrixToTable(res, ui->matrixRes);
-        ui->matrixRes->resizeRowsToContents();
-        ui->matrixRes->resizeColumnsToContents();
+        if (row1 == row2 && column1 == column2) {
+            Matrix tmp1 = TableToMatrix(ui->matrixA);
+            Matrix tmp2 = TableToMatrix(ui->matrixB);
+            Matrix res = tmp1 + tmp2;
+            ui->matrixRes->setRowCount(row1);
+            ui->matrixRes->setColumnCount(column1);
+            MatrixToTable(res, ui->matrixRes);
+            ui->matrixRes->resizeRowsToContents();
+            ui->matrixRes->resizeColumnsToContents();
+        }
+        else ErrorMsg(2);
     }
 }
 
@@ -161,14 +172,17 @@ void MainWindow::on_minus_clicked()
     int row2 = ui->matrixB->rowCount();
     int column2 = ui->matrixB->columnCount();
     if ((row1 != 0) && (column1 != 0) && (row2 != 0) && (column2 != 0)){
-        Matrix tmp1 = TableToMatrix(ui->matrixA);
-        Matrix tmp2 = TableToMatrix(ui->matrixB);
-        Matrix res = tmp1 - tmp2;
-        ui->matrixRes->setRowCount(row1);
-        ui->matrixRes->setColumnCount(column1);
-        MatrixToTable(res, ui->matrixRes);
-        ui->matrixRes->resizeRowsToContents();
-        ui->matrixRes->resizeColumnsToContents();
+        if (row1 == row2 && column1 == column2) {
+            Matrix tmp1 = TableToMatrix(ui->matrixA);
+            Matrix tmp2 = TableToMatrix(ui->matrixB);
+            Matrix res = tmp1 - tmp2;
+            ui->matrixRes->setRowCount(row1);
+            ui->matrixRes->setColumnCount(column1);
+            MatrixToTable(res, ui->matrixRes);
+            ui->matrixRes->resizeRowsToContents();
+            ui->matrixRes->resizeColumnsToContents();
+        }
+        else ErrorMsg(2);
     }
 }
 
@@ -179,13 +193,16 @@ void MainWindow::on_mul_clicked()
     int row2 = ui->matrixB->rowCount();
     int column2 = ui->matrixB->columnCount();
     if ((row1 != 0) && (column1 != 0) && (row2 != 0) && (column2 != 0)){
-        Matrix tmp1 = TableToMatrix(ui->matrixA);
-        Matrix tmp2 = TableToMatrix(ui->matrixB);
-        Matrix res = tmp1 * tmp2;
-        ui->matrixRes->setRowCount(row1);
-        ui->matrixRes->setColumnCount(column2);
-        MatrixToTable(res, ui->matrixRes);
-        ui->matrixRes->resizeRowsToContents();
-        ui->matrixRes->resizeColumnsToContents();
+        if (column1 == row2){
+            Matrix tmp1 = TableToMatrix(ui->matrixA);
+            Matrix tmp2 = TableToMatrix(ui->matrixB);
+            Matrix res = tmp1 * tmp2;
+            ui->matrixRes->setRowCount(row1);
+            ui->matrixRes->setColumnCount(column2);
+            MatrixToTable(res, ui->matrixRes);
+            ui->matrixRes->resizeRowsToContents();
+            ui->matrixRes->resizeColumnsToContents();
+        }
+        else ErrorMsg(2);
     }
 }
