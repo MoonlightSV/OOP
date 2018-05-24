@@ -52,7 +52,7 @@ void MainWindow::on_detA_clicked()
             QString str = QString::number(det, 'f', 3);//перевод в строку вещ.числа
             ui->LdetA->setText(str);//вывод строки в метку
         }
-        else ErrorMsg(2);
+        else ErrorMsg(3);
     }
 }
 
@@ -67,7 +67,7 @@ void MainWindow::on_detB_clicked()
             QString str = QString::number(det, 'f', 3);//перевод в строку вещ.числа
             ui->LdetB->setText(str);//вывод строки в метку
         }
-        else ErrorMsg(2);
+        else ErrorMsg(3);
     }
 }
 
